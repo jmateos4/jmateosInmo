@@ -40,7 +40,7 @@ const config = {
   development: {
     mongo: {
       // uri: 'mongodb://localhost/realstate-dev',
-      uri: 'mongodb://username1:username1@ds253284.mlab.com:53284/jmateosinmo',
+      uri: 'mongodb://realestate:realestate1@ds145555.mlab.com:45555/realestate',
       options: {
         debug: true
       }
@@ -50,7 +50,7 @@ const config = {
     ip: process.env.IP || undefined,
     port: process.env.PORT || 8080,
     mongo: {
-      uri: process.env.MONGODB_URI || 'mongodb://username1:username1@ds253284.mlab.com:53284/jmateosinmo'
+      uri: process.env.MONGODB_URI || 'mongodb://localhost/realstate'
     }
   }
 }

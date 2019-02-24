@@ -1,5 +1,6 @@
 package com.jmateos.mateos_javier_aplicacioninmo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -72,9 +73,10 @@ public class DashboardActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
-            // Handle the camera action
-        } else if (id == R.id.nav_logout) {
 
+        } else if (id == R.id.nav_login) {
+            Intent goLogin = new Intent(this, LoginActivity.class);
+            startActivity(goLogin);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

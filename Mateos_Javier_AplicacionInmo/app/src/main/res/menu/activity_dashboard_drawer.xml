@@ -9,7 +9,7 @@
             android:icon="@drawable/ic_menu_send"
             android:title="Inicio" />
         <item
-            android:id="@+id/nav_logout"
+            android:id="@+id/nav_login"
             android:icon="@android:drawable/ic_menu_compass"
             android:title="Iniciar Sesión" />
     </group>

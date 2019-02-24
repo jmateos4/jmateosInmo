@@ -14,8 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    private static final String BASE_URL = "https://authentication-fppitlaelx.now.sh/";
-    public static String MASTER_KEY = "lNeTI8waAqmpUZa7QSiLv53rqSnlsldv";
+    private static final String BASE_URL = "https://desolate-coast-41998.herokuapp.com/";
+    public static String MASTER_KEY = "dqVU9SXEW0iAMvOZGv9lnz3q67ukPcDH";
 
     // Solución temporal
     public static String jwtToken = null;

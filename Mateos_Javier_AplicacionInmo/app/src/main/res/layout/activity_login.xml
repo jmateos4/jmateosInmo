@@ -32,12 +32,13 @@
         android:layout_marginEnd="24dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/textLogo"
+        tools:text="@string/email" />
 
     <EditText
         android:id="@+id/editPwd"
@@ -46,12 +47,13 @@
         android:layout_marginTop="48dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:text="Password"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/editUser"
         app:layout_constraintStart_toStartOf="@+id/editUser"
-        app:layout_constraintTop_toBottomOf="@+id/editUser" />
+        app:layout_constraintTop_toBottomOf="@+id/editUser"
+        tools:text="@string/password" />
 
     <Button
         android:id="@+id/btnSignin"
@@ -59,6 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:background="@android:color/white"
+        android:text="Log In"
         android:textColor="#FF6611"
         app:layout_constraintEnd_toEndOf="@+id/editPwd"
         app:layout_constraintStart_toStartOf="@+id/editPwd"
@@ -70,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:text="No Account yet? Sign Up"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/btnSignin"
