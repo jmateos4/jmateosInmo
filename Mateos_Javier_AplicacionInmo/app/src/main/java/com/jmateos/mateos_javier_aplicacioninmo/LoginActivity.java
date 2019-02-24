@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     setContentView(R.layout.activity_login);
 
-    btnLogin = findViewById(R.id.btnSignin);
+    btnLogin = findViewById(R.id.btnSignup);
     textSignup = findViewById(R.id.textSignup);
     email = findViewById(R.id.editUser);
     password = findViewById(R.id.editPwd);

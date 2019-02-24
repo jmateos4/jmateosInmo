@@ -56,7 +56,7 @@
         tools:text="@string/password" />
 
     <Button
-        android:id="@+id/btnSignin"
+        android:id="@+id/btnSignup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -76,9 +76,9 @@
         android:text="No Account yet? Sign Up"
         android:textColor="@android:color/white"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnSignin"
-        app:layout_constraintStart_toStartOf="@+id/btnSignin"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignin"
+        app:layout_constraintEnd_toEndOf="@+id/btnSignup"
+        app:layout_constraintStart_toStartOf="@+id/btnSignup"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignup"
         tools:text="@string/change_logL" />
 
 </android.support.constraint.ConstraintLayout>
