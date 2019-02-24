@@ -1,3 +1,22 @@
 <resources>
-  <string name="app_name">Mateos_Javier_AplicacionInmo</string>
+    <!-- Preferencias -->
+    <string name="sharedpreferences_filename">login</string>
+    <string name="jwt_key">JWT_KEY</string>
+
+    <!-- Variables de String -->
+    <string name="app_name">Mateos_Javier_AplicacionInmo</string>
+    <string name="change_logS">Already have an account? Log in</string>
+    <string name="change_logL">No account yet? Sign Up</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Log In</string>
+    <string name="signup">Sign Up</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Usuario Inmo</string>
+    <string name="nav_header_subtitle">inmo@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 </resources>

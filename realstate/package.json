@@ -19,6 +19,7 @@
     "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.3",
     "apidoc": "^0.17.6",
     "apidoc-markdown": "^0.2.0",
     "babel-eslint": "^8.0.1",
@@ -34,7 +35,7 @@
     "jest-cli": "^20.0.4",
     "mongodb-memory-server": "^1.7.3",
     "nock": "^9.0.2",
-    "nodemon": "^1.10.2",
+    "nodemon": "^1.18.10",
     "opn-cli": "^3.1.0",
     "sinon": "^4.0.1",
     "supertest": "^3.0.0"
@@ -69,6 +70,6 @@
     "request-promise": "^4.2.2"
   },
   "engines": {
-    "node": "10.x"
+    "node": "8.10.x"
   }
 }

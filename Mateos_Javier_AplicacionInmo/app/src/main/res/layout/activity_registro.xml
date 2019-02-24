@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF6611"
-    tools:context=".LoginActivity">
+    tools:context=".RegistroActivity">
 
     <TextView
         android:id="@+id/textLogo"
@@ -28,30 +28,30 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/textLogo"
+        tools:text="@string/name" />
 
     <EditText
         android:id="@+id/editPwd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="Password"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/editUser"
         app:layout_constraintStart_toStartOf="@+id/editUser"
-        app:layout_constraintTop_toBottomOf="@+id/editUser" />
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        tools:text="@string/password" />
 
     <Button
         android:id="@+id/btnSignin"
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="@+id/editPwd"
         app:layout_constraintStart_toStartOf="@+id/editPwd"
         app:layout_constraintTop_toBottomOf="@+id/editPwd"
-        tools:text="@string/login" />
+        tools:text="@string/signup" />
 
     <TextView
         android:id="@+id/textSignup"
@@ -75,6 +75,20 @@
         app:layout_constraintEnd_toEndOf="@+id/btnSignin"
         app:layout_constraintStart_toStartOf="@+id/btnSignin"
         app:layout_constraintTop_toBottomOf="@+id/btnSignin"
-        tools:text="@string/change_logL" />
+        tools:text="@string/change_logS" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@android:color/white"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/editUser"
+        app:layout_constraintStart_toStartOf="@+id/editUser"
+        app:layout_constraintTop_toBottomOf="@+id/editUser"
+        tools:text="@string/email" />
 
 </android.support.constraint.ConstraintLayout>
