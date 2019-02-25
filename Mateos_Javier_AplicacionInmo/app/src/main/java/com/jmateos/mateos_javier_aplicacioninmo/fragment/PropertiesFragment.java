@@ -1,4 +1,4 @@
-package com.jmateos.mateos_javier_aplicacioninmo;
+package com.jmateos.mateos_javier_aplicacioninmo.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,28 +6,34 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.jmateos.mateos_javier_aplicacioninmo.R;
+import com.jmateos.mateos_javier_aplicacioninmo.UtilToken;
+import com.jmateos.mateos_javier_aplicacioninmo.adapter.PropertiesRecyclerViewAdapter;
+import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
+import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponse;
+import com.jmateos.mateos_javier_aplicacioninmo.response.ResponseContainer;
+import com.jmateos.mateos_javier_aplicacioninmo.retrofit.generator.ServiceGenerator;
+import com.jmateos.mateos_javier_aplicacioninmo.retrofit.generator.TipoAutenticacion;
+import com.jmateos.mateos_javier_aplicacioninmo.retrofit.services.PropertyService;
 
-import com.jmateos.mateos_javier_aplicacioninmo.dummy.DummyContent;
-import com.jmateos.mateos_javier_aplicacioninmo.dummy.DummyContent.DummyItem;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-import java.util.List;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
 public class PropertiesFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private PropertiesInteractionListener mListener;
+    private RecyclerView recyclerView;
+    private Context ctx;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -63,13 +69,35 @@ public class PropertiesFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = view.findViewById(R.id.listProperties);
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new PropertiesRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+
+            // Aqui listo Properties
+            PropertyService service = ServiceGenerator.createService(PropertyService.class);
+
+            Call<ResponseContainer<PropertyResponse>> call = service.listProperties();
+            call.enqueue(new Callback<ResponseContainer<PropertyResponse>>() {
+                @Override
+                public void onResponse(Call<ResponseContainer<PropertyResponse>> call, Response<ResponseContainer<PropertyResponse>> response) {
+                    if (response.isSuccessful()) {
+                        recyclerView.setAdapter(new PropertiesRecyclerViewAdapter(ctx, response.body().getRows(), mListener));
+                    } else {
+                        // Toast
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseContainer<PropertyResponse>> call, Throwable t) {
+                    // Toast
+                    Log.i("onFailure", "error en retrofit");
+                }
+            });
         }
         return view;
     }
@@ -78,8 +106,9 @@ public class PropertiesFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        this.ctx = context;
+        if (context instanceof PropertiesInteractionListener) {
+            mListener = (PropertiesInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -92,18 +121,4 @@ public class PropertiesFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
-    }
 }

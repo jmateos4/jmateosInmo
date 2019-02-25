@@ -1,4 +1,4 @@
-package com.jmateos.mateos_javier_aplicacioninmo.model;
+package com.jmateos.mateos_javier_aplicacioninmo.response;
 
 import java.util.List;
 

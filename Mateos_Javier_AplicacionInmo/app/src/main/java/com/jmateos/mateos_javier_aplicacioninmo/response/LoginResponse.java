@@ -1,7 +1,8 @@
-package com.jmateos.mateos_javier_aplicacioninmo.model;
+package com.jmateos.mateos_javier_aplicacioninmo.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.jmateos.mateos_javier_aplicacioninmo.model.User;
 
 public class LoginResponse {
 

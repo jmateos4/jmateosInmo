@@ -14,8 +14,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertiesFragment;
+import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
+
 public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, PropertiesInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,11 @@ public class DashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment, new PropertiesFragment())
+                .commit();
 
 
     }

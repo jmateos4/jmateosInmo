@@ -1,6 +1,6 @@
 package com.jmateos.mateos_javier_aplicacioninmo.retrofit.services;
 
-import com.jmateos.mateos_javier_aplicacioninmo.model.LoginResponse;
+import com.jmateos.mateos_javier_aplicacioninmo.response.LoginResponse;
 import com.jmateos.mateos_javier_aplicacioninmo.model.Registro;
 
 import retrofit2.Call;

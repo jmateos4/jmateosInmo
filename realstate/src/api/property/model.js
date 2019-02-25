@@ -42,7 +42,8 @@ const propertySchema = new Schema({
     type: String
   },
   loc: {
-    type: String
+    type: String,
+    required: true
   }
 }, {
   timestamps: true,

@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jmateos.mateos_javier_aplicacioninmo.model.LoginResponse;
+import com.jmateos.mateos_javier_aplicacioninmo.response.LoginResponse;
 import com.jmateos.mateos_javier_aplicacioninmo.model.Registro;
 import com.jmateos.mateos_javier_aplicacioninmo.retrofit.generator.ServiceGenerator;
 import com.jmateos.mateos_javier_aplicacioninmo.retrofit.services.LoginService;

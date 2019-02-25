@@ -1,6 +1,6 @@
 package com.jmateos.mateos_javier_aplicacioninmo.retrofit.services;
 
-import com.jmateos.mateos_javier_aplicacioninmo.model.ResponseContainer;
+import com.jmateos.mateos_javier_aplicacioninmo.response.ResponseContainer;
 import com.jmateos.mateos_javier_aplicacioninmo.model.User;
 
 import retrofit2.Call;
