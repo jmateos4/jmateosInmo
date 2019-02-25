@@ -3,6 +3,7 @@ package com.jmateos.mateos_javier_aplicacioninmo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -24,6 +25,7 @@ public class DashboardActivity extends AppCompatActivity
 
     MenuItem itemManage, itemManage2, itemManage3, itemManage4;
     ImageView imageView;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +46,19 @@ public class DashboardActivity extends AppCompatActivity
         itemManage = navigationView.getMenu().findItem(R.id.nav_logout);
         itemManage2 = navigationView.getMenu().findItem(R.id.nav_fav);
         itemManage3 = navigationView.getMenu().findItem(R.id.nav_viviendas);
+        itemManage4 = navigationView.getMenu().findItem(R.id.nav_login);
+        fab = findViewById(R.id.fabAdd);
+
 
         if(UtilToken.getToken(this) == null) {
             itemManage.setVisible(false);
             itemManage2.setVisible(false);
             itemManage3.setVisible(false);
+            fab.hide();
+        }
+        if(UtilToken.getToken(this) != null) {
+            itemManage4.setVisible(false);
+            fab.show();
         }
 
 
