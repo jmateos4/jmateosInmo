@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class PropertyResponse {
 
+    @SerializedName("id")
+    @Expose
+    private String id;
     @SerializedName("title")
     @Expose
     private String title;
@@ -45,24 +48,8 @@ public class PropertyResponse {
     @Expose
     private String updatedAt;
 
-
-    public PropertyResponse(String title, String description, int price, int rooms, int size, String categoryId, String address, String zipcode, String city, String province, String loc) {
-
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.rooms = rooms;
-        this.size = size;
-        this.categoryId = categoryId;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.city = city;
-        this.province = province;
-        this.loc = loc;
-    }
-
-    public PropertyResponse(String title, String description, int price, int rooms, int size, String categoryId, String address, String zipcode, String city, String province, String loc, String createdAt, String updatedAt) {
-
+    public PropertyResponse(String id, String title, String description, int price, int rooms, int size, String categoryId, String address, String zipcode, String city, String province, String loc, String createdAt, String updatedAt) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
@@ -79,6 +66,13 @@ public class PropertyResponse {
     }
 
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -187,6 +181,7 @@ public class PropertyResponse {
     @Override
     public String toString() {
         return "PropertyResponse{" +
+                "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

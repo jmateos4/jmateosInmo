@@ -7,7 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.jmateos.mateos_javier_aplicacioninmo.DashboardActivity;
+import com.jmateos.mateos_javier_aplicacioninmo.PropertyDetailActivity;
 import com.jmateos.mateos_javier_aplicacioninmo.R;
+import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertyDetailFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
 import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponse;
 
@@ -43,13 +47,14 @@ public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<Properti
         holder.mHabitaciones.setText(String.valueOf(mValues.get(position).getRooms()));
         holder.mSize.setText(String.valueOf(mValues.get(position).getSize()));
 
+        holder.itemView.setTag(mValues.get(position));
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PropertyResponse item = (PropertyResponse) v.getTag();
-                //Intent intent = new Intent(ctx, PropertyDetailActivity.class);
-                //intent.putExtra(PropertyDetailFragment.ARG_ITEM_ID, item.getId());
-                //ctx.startActivity(intent);
+                Intent intent = new Intent(ctx, PropertyDetailActivity.class);
+                intent.putExtra(PropertyDetailFragment.ARG_ITEM_ID, item.getId());
+                ctx.startActivity(intent);
             }
         });
     }

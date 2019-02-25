@@ -37,5 +37,17 @@ public class UtilToken {
         return jwt;
     }
 
+    public static String getIdUser(Context mContext) {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(
+                mContext.getString(R.string.sharedpreferences_filename),
+                Context.MODE_PRIVATE
+        );
+
+        String idUser = sharedPreferences
+                .getString(mContext.getString(R.string.jwt_id), null);
+
+        return idUser;
+    }
+
 
 }

@@ -7,11 +7,20 @@
         <item
             android:id="@+id/nav_inicio"
             android:icon="@drawable/ic_menu_send"
-            android:title="Inicio" />
+            android:title="Viviendas" />
         <item
             android:id="@+id/nav_login"
             android:icon="@android:drawable/ic_menu_compass"
             android:title="Iniciar Sesión" />
+        <item
+            android:id="@+id/nav_viviendas"
+            android:title="Mis Viviendas" />
+        <item
+            android:id="@+id/nav_fav"
+            android:title="Viviendas Favoritas" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Cerrar Sesion" />
     </group>
 
 </menu>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPropertyActivity">
+
+    <EditText
+        android:id="@+id/edTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:hint="Titulo"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:tint="@color/FF6611"/>
+
+    <EditText
+        android:id="@+id/edDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Descripcion"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edTitle"
+        app:layout_constraintStart_toStartOf="@+id/edTitle"
+        app:layout_constraintTop_toBottomOf="@+id/edTitle"
+        android:tint="@color/FF6611"/>
+
+    <EditText
+        android:id="@+id/edPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Precio"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edDescription"
+        android:tint="@color/FF6611"/>
+
+    <EditText
+        android:id="@+id/edRooms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Nº Habitaciones"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edPrice"
+        android:tint="@color/FF6611"/>
+
+    <RadioGroup
+        android:id="@+id/radioCategorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="0dp"
+        app:layout_constraintStart_toStartOf="@+id/textCat"
+        app:layout_constraintTop_toBottomOf="@+id/textCat">
+
+        <RadioButton
+            android:id="@+id/radioCompra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:text="Compra" />
+
+        <RadioButton
+            android:id="@+id/radioAlquiler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:text="Alquiler" />
+
+        <RadioButton
+            android:id="@+id/radioObra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:text="Obra Nueva" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Cateogoria del Inmueble"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/edRooms"
+        app:layout_constraintTop_toBottomOf="@+id/edRooms"
+        android:tint="@color/FF6611"/>
+
+    <EditText
+        android:id="@+id/edAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Direccion"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/radioCategorias"
+        app:layout_constraintTop_toBottomOf="@+id/radioCategorias"
+        />
+
+    <EditText
+        android:id="@+id/edZipcode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Cod.Postal"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edDescription"
+        app:layout_constraintStart_toEndOf="@+id/edAddress"
+        app:layout_constraintTop_toTopOf="@+id/edAddress"
+        android:tint="@color/FF6611"/>
+
+    <EditText
+        android:id="@+id/edCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Ciudad"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/edAddress"
+        app:layout_constraintTop_toBottomOf="@+id/edAddress"
+        android:tint="@color/FF6611"/>
+
+    <EditText
+        android:id="@+id/edProvince"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Provincia"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edZipcode"
+        app:layout_constraintStart_toStartOf="@+id/edZipcode"
+        app:layout_constraintTop_toTopOf="@+id/edCity"
+        android:tint="@color/FF6611"/>
+
+    <Button
+        android:id="@+id/buttonAñadir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="#FF6611"
+        android:text="Añadir"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edCity"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="#FF6611"
+        android:text="Cancelar"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edProvince"
+        app:layout_constraintStart_toStartOf="@+id/edProvince"
+        app:layout_constraintTop_toTopOf="@+id/buttonAñadir"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.jmateos.mateos_javier_aplicacioninmo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,12 +14,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertiesFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
 
 public class DashboardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, PropertiesInteractionListener {
+
+    MenuItem itemManage, itemManage2, itemManage3, itemManage4;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,19 @@ public class DashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        itemManage = navigationView.getMenu().findItem(R.id.nav_logout);
+        itemManage2 = navigationView.getMenu().findItem(R.id.nav_fav);
+        itemManage3 = navigationView.getMenu().findItem(R.id.nav_viviendas);
+
+        if(UtilToken.getToken(this) == null) {
+            itemManage.setVisible(false);
+            itemManage2.setVisible(false);
+            itemManage3.setVisible(false);
+        }
+
+
+
 
         getSupportFragmentManager()
                 .beginTransaction()
