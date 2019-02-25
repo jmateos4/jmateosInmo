@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/arizonia"
         android:text="RealState"
@@ -21,14 +21,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
 
     <EditText
         android:id="@+id/editUser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
@@ -44,7 +44,7 @@
         android:id="@+id/editPwd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="Password"
@@ -72,13 +72,29 @@
         android:id="@+id/textSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
         android:text="No Account yet? Sign Up"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/btnSignup"
         app:layout_constraintStart_toStartOf="@+id/btnSignup"
         app:layout_constraintTop_toBottomOf="@+id/btnSignup"
         tools:text="@string/change_logL" />
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_field"
+        android:contentDescription="TODO"
+        android:tint="@color/white"/>
 
 </android.support.constraint.ConstraintLayout>
