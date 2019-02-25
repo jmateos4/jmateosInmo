@@ -1,11 +1,13 @@
 package com.jmateos.mateos_javier_aplicacioninmo;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -61,25 +63,21 @@ public class DashboardActivity extends AppCompatActivity
             fab.show();
         }
 
-
-
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment, new PropertiesFragment())
                 .commit();
 
-
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goAddProperty();
+            }
+        });
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    private void goAddProperty() {
+        startActivity(new Intent(DashboardActivity.this,AddPropertyActivity.class));
     }
 
     @Override
@@ -115,10 +113,61 @@ public class DashboardActivity extends AppCompatActivity
         } else if (id == R.id.nav_login) {
             Intent goLogin = new Intent(this, LoginActivity.class);
             startActivity(goLogin);
+            finish();
+        } else if ( id == R.id.nav_logout) {
+            UtilToken.setIdUser(DashboardActivity.this, null);
+            UtilToken.setToken(DashboardActivity.this, null);
+            startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        }  if(UtilToken.getToken(this) == null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("¿Quiere cerrar la aplicacion?")
+                    .setTitle("Cerrar Aplicación");
+            builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("¿Desea cerrar Sesión?")
+                    .setTitle("Cerrar Sesión");
+            builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    UtilToken.setIdUser(DashboardActivity.this, null);
+                    UtilToken.setToken(DashboardActivity.this, null);
+                    startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
     }
 }
