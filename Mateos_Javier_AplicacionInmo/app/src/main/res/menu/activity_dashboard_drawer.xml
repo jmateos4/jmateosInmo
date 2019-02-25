@@ -6,20 +6,23 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_inicio"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/ic_action_houses_orange"
             android:title="Viviendas" />
         <item
             android:id="@+id/nav_login"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_action_login_orange"
             android:title="Iniciar Sesión" />
         <item
             android:id="@+id/nav_viviendas"
+            android:icon="@drawable/ic_action_insurance_orange"
             android:title="Mis Viviendas" />
         <item
             android:id="@+id/nav_fav"
+            android:icon="@drawable/ic_action_like_orange"
             android:title="Viviendas Favoritas" />
         <item
             android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_action_logout_orange"
             android:title="Cerrar Sesion" />
     </group>
 
