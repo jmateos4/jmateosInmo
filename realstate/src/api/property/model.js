@@ -1,4 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
+import Photo from '../photo/model'
+import { finished } from 'stream';
 
 const propertySchema = new Schema({
   ownerId: {
@@ -42,10 +44,14 @@ const propertySchema = new Schema({
     type: String
   },
   loc: {
-    type: String,
-    required: true
+    // type: String,
+    type: [Number],
+    required: true,
+    get: (v) => v.join(),
+    set: (v) => v.split(',').map(Number),
   }
 }, {
+  strict: false,
   timestamps: true,
   toJSON: {
     virtuals: true,
@@ -79,6 +85,16 @@ propertySchema.methods = {
     } : view
   }
 }
+
+propertySchema.pre('remove', {query:true}, function(next){
+  Photo    
+    .find({propertyId: this.id})
+    .exec((err, result) => {
+      Promise.all(result.map(photo => photo.remove()))
+      next()
+    }
+    )
+})
 
 const model = mongoose.model('Property', propertySchema)
 
