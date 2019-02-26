@@ -114,4 +114,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="precio">Precio</string>
+    <string name="habitaciones">Nº Habitaciones</string>
+    <string name="direccion">Direccion</string>
+    <string name="ciudad">Ciudad</string>
 </resources>

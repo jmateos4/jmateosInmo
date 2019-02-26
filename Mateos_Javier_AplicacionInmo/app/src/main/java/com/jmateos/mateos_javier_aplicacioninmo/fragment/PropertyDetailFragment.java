@@ -35,8 +35,9 @@ public class PropertyDetailFragment extends Fragment {
 
     private PropertyResponse mItem;
 
-    private PropertyService service = ServiceGenerator.createService(PropertyService.class,
-            ServiceGenerator.jwtToken, TipoAutenticacion.JWT);
+    private TextView deDescripcion, dePrecio;
+
+
 
 
     public PropertyDetailFragment() {
@@ -52,7 +53,7 @@ public class PropertyDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_property_detail, container, false);
+        final View rootView = inflater.inflate(R.layout.content_property_detail, container, false);
 
         // Show the dummy content as text in a TextView.
 
@@ -66,7 +67,7 @@ public class PropertyDetailFragment extends Fragment {
 
             Activity activity = this.getActivity();
             final CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
-
+            PropertyService service = ServiceGenerator.createService(PropertyService.class);
 
             Call<PropertyResponse> call = service.oneProperty(idProperty);
             call.enqueue(new Callback<PropertyResponse>() {
@@ -86,8 +87,11 @@ public class PropertyDetailFragment extends Fragment {
                                         appBarLayout.setBackground(resource);
                                     }
                                 });*/
-                        //((TextView) rootView.findViewById(R.id.localizacion_detail)).setText("Localización: "+mItem.getDireccion());
-                        //((TextView) rootView.findViewById(R.id.dimension_detail)).setText("Dimensiones: "+mItem.getEspacio().getDimensiones());
+                        ((TextView) rootView.findViewById(R.id.deDescripcion)).setText("Descripcion: " + mItem.getDescription());
+                        ((TextView) rootView.findViewById(R.id.dePrecio)).setText("Precio: " + String.valueOf(mItem.getPrice()));
+                        ((TextView) rootView.findViewById(R.id.deHab)).setText("Nº Habitaciones: " + String.valueOf(mItem.getRooms()));
+                        ((TextView) rootView.findViewById(R.id.deDireccion)).setText("Direccion: " + mItem.getAddress());
+                        ((TextView) rootView.findViewById(R.id.deCiudad)).setText("Ciudad: " + mItem.getCity());
                     } else {
                         // Toast
                     }

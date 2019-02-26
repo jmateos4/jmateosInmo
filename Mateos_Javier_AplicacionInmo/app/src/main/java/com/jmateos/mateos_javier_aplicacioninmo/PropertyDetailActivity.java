@@ -9,12 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertiesFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertyDetailFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
 
 public class PropertyDetailActivity extends AppCompatActivity implements PropertiesInteractionListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Propert
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
 
         if (savedInstanceState == null) {
 

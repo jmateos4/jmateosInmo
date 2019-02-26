@@ -44,6 +44,7 @@ public class DashboardActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
 
         itemManage = navigationView.getMenu().findItem(R.id.nav_logout);
         itemManage2 = navigationView.getMenu().findItem(R.id.nav_fav);

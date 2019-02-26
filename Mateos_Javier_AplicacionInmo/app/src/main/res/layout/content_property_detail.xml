@@ -6,4 +6,112 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".PropertyDetailActivity"
-    tools:showIn="@layout/activity_property_detail"/>
+    tools:showIn="@layout/activity_property_detail">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/deDescripcion"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageDescription"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/descripcion" />
+
+        <TextView
+            android:id="@+id/dePrecio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/deDescripcion"
+            app:layout_constraintTop_toBottomOf="@+id/deDescripcion"
+            tools:text="@string/precio" />
+
+        <TextView
+            android:id="@+id/deHab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/dePrecio"
+            app:layout_constraintTop_toBottomOf="@+id/dePrecio"
+            tools:text="@string/habitaciones" />
+
+        <TextView
+            android:id="@+id/deDireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/deHab"
+            app:layout_constraintTop_toBottomOf="@+id/deHab"
+            tools:text="@string/direccion" />
+
+        <TextView
+            android:id="@+id/deCiudad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/deDireccion"
+            app:layout_constraintTop_toBottomOf="@+id/deDireccion"
+            tools:text="@string/ciudad" />
+
+        <ImageView
+            android:id="@+id/imageDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/deDescripcion"
+            app:srcCompat="@drawable/ic_action_description_orange" />
+
+        <ImageView
+            android:id="@+id/imagenPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/dePrecio"
+            app:layout_constraintEnd_toEndOf="@+id/imageDescription"
+            app:layout_constraintStart_toStartOf="@+id/imageDescription"
+            app:layout_constraintTop_toTopOf="@+id/dePrecio"
+            app:srcCompat="@drawable/ic_action_price_orange" />
+
+        <ImageView
+            android:id="@+id/imageRooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/deHab"
+            app:layout_constraintEnd_toEndOf="@+id/imagenPrice"
+            app:layout_constraintStart_toStartOf="@+id/imagenPrice"
+            app:layout_constraintTop_toTopOf="@+id/deHab"
+            app:srcCompat="@drawable/ic_action_rooms_orange" />
+
+        <ImageView
+            android:id="@+id/imageAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/deDireccion"
+            app:layout_constraintEnd_toEndOf="@+id/imageRooms"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/imageRooms"
+            app:layout_constraintTop_toTopOf="@+id/deDireccion"
+            app:srcCompat="@drawable/ic_action_address_orange" />
+
+        <ImageView
+            android:id="@+id/imageCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/deCiudad"
+            app:layout_constraintEnd_toEndOf="@+id/imageAddress"
+            app:layout_constraintStart_toStartOf="@+id/imageAddress"
+            app:layout_constraintTop_toTopOf="@+id/deCiudad"
+            app:srcCompat="@drawable/ic_action_city_orange" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

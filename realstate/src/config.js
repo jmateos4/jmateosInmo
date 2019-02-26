@@ -40,7 +40,7 @@ const config = {
   development: {
     mongo: {
       // uri: 'mongodb://localhost/realstate-dev',
-      uri: 'mongodb://realestate:realestate1@ds145555.mlab.com:45555/realestate',
+      uri: 'mongodb://username:username1@ds253284.mlab.com:53284/jmateosinmo',
       options: {
         debug: true
       }

@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    private static final String BASE_URL = "https://desolate-coast-41998.herokuapp.com/";
+    private static final String BASE_URL = "https://thawing-stream-33402.herokuapp.com/";
     public static String MASTER_KEY = "dqVU9SXEW0iAMvOZGv9lnz3q67ukPcDH";
 
     // Solución temporal
