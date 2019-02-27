@@ -2,6 +2,7 @@ package com.jmateos.mateos_javier_aplicacioninmo.retrofit.services;
 
 import com.jmateos.mateos_javier_aplicacioninmo.model.PropertyDTO;
 import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponse;
+import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponseOne;
 import com.jmateos.mateos_javier_aplicacioninmo.response.ResponseContainer;
 
 import retrofit2.Call;
@@ -17,7 +18,7 @@ public interface PropertyService {
     Call<ResponseContainer<PropertyResponse>> listProperties();
 
     @GET("properties/{id}")
-    Call<PropertyResponse> oneProperty(@Path("id") String id);
+    Call<PropertyResponseOne> oneProperty(@Path("id") String id);
 
     @DELETE("properties/{id}")
     Call<PropertyResponse> deleteProperty(@Path("id") String id);

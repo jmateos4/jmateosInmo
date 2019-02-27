@@ -2,13 +2,19 @@ package com.jmateos.mateos_javier_aplicacioninmo.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jmateos.mateos_javier_aplicacioninmo.DashboardActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.jmateos.mateos_javier_aplicacioninmo.PropertyDetailActivity;
 import com.jmateos.mateos_javier_aplicacioninmo.R;
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertyDetailFragment;
@@ -41,11 +47,24 @@ public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<Properti
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mDireccion.setText(mValues.get(position).getAddress());
-        holder.mPrecio.setText(String.valueOf(mValues.get(position).getPrice()));
-        holder.mCiudad.setText(mValues.get(position).getCity());
-        holder.mHabitaciones.setText(String.valueOf(mValues.get(position).getRooms()));
-        holder.mSize.setText(String.valueOf(mValues.get(position).getSize()));
+        holder.mTitulo.setText(mValues.get(position).getTitle());
+        holder.mPrecio.setText(String.valueOf(mValues.get(position).getPrice())+ " €");
+        holder.mHabitaciones.setText("Nº Hab: "+ String.valueOf(mValues.get(position).getRooms()));
+
+        if(mValues.get(position).getPhotos() == null) {
+
+        } else {
+            Glide
+                    .with(ctx)
+                    .load(mValues.get(position).getPhotos().get(0))
+                    .into(new SimpleTarget<Drawable>(){
+                        @Override
+                        public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                            holder.mPhoto.setBackground(resource);
+                        }
+                    });
+                }
+
 
         holder.itemView.setTag(mValues.get(position));
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +85,11 @@ public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<Properti
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mDireccion;
+        public final TextView mTitulo;
         public final TextView mPrecio;
-        public final TextView mCiudad;
+       // public final TextView mCiudad;
         public final TextView mHabitaciones;
-        public final TextView mSize;
+        public final ImageView mPhoto;
 
 
         public PropertyResponse mItem;
@@ -78,11 +97,12 @@ public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<Properti
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mDireccion = view.findViewById(R.id.textDireccion);
+            mTitulo = view.findViewById(R.id.textTitulo);
             mPrecio = view.findViewById(R.id.textPrecio);
-            mCiudad = view.findViewById(R.id.textCiudad);
+            //mCiudad = view.findViewById(R.id.textCiudad);
             mHabitaciones = view.findViewById(R.id.textHabitaciones);
-            mSize = view.findViewById(R.id.textSize);
+            mPhoto = view.findViewById(R.id.imageList);
+
 
 
 

@@ -20,6 +20,9 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.jmateos.mateos_javier_aplicacioninmo.R;
 import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponse;
+import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponseOne;
+import com.jmateos.mateos_javier_aplicacioninmo.response.ResponseContainer;
+import com.jmateos.mateos_javier_aplicacioninmo.response.Rows;
 import com.jmateos.mateos_javier_aplicacioninmo.retrofit.generator.ServiceGenerator;
 import com.jmateos.mateos_javier_aplicacioninmo.retrofit.generator.TipoAutenticacion;
 import com.jmateos.mateos_javier_aplicacioninmo.retrofit.services.PropertyService;
@@ -33,7 +36,7 @@ public class PropertyDetailFragment extends Fragment {
 
     public static final String ARG_ITEM_ID = "item_id";
 
-    private PropertyResponse mItem;
+    private Rows mItem;
 
     private TextView deDescripcion, dePrecio;
 
@@ -69,24 +72,24 @@ public class PropertyDetailFragment extends Fragment {
             final CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
             PropertyService service = ServiceGenerator.createService(PropertyService.class);
 
-            Call<PropertyResponse> call = service.oneProperty(idProperty);
-            call.enqueue(new Callback<PropertyResponse>() {
+            Call<PropertyResponseOne> call = service.oneProperty(idProperty);
+            call.enqueue(new Callback<PropertyResponseOne>() {
                 @Override
-                public void onResponse(Call<PropertyResponse> call, Response<PropertyResponse> response) {
+                public void onResponse(Call<PropertyResponseOne> call, Response<PropertyResponseOne> response) {
                     if (response.isSuccessful()) {
-                    mItem = new PropertyResponse(idProperty, response.body().getTitle(), response.body().getDescription(), response.body().getPrice(), response.body().getRooms(), response.body().getSize(), response.body().getCategoryId(), response.body().getAddress(), response.body().getZipcode(), response.body().getCity(), response.body().getProvince(), response.body().getLoc(), response.body().getCreatedAt(), response.body().getUpdatedAt());
+                        mItem = response.body().getRows();
                         appBarLayout.setTitle(mItem.getTitle());
 
-                        //Glide
-                                //.with(getContext())
-                                //.load(mItem.getFoto())
-                                /*.into(new SimpleTarget<Drawable>(){
+                        Glide
+                                .with(getContext())
+                                .load(mItem.getPhotos().get(1))
+                                .into(new SimpleTarget<Drawable>(){
 
                                     @Override
                                     public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                                         appBarLayout.setBackground(resource);
                                     }
-                                });*/
+                                });
                         ((TextView) rootView.findViewById(R.id.deDescripcion)).setText("Descripcion: " + mItem.getDescription());
                         ((TextView) rootView.findViewById(R.id.dePrecio)).setText("Precio: " + String.valueOf(mItem.getPrice()));
                         ((TextView) rootView.findViewById(R.id.deHab)).setText("Nº Habitaciones: " + String.valueOf(mItem.getRooms()));
@@ -100,7 +103,7 @@ public class PropertyDetailFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<PropertyResponse> call, Throwable t) {
+                public void onFailure(Call<PropertyResponseOne> call, Throwable t) {
                     // Toast
                     Log.i("onFailure", "error en retrofit");
                 }

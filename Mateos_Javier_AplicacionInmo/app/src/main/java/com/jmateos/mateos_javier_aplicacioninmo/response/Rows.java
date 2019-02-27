@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PropertyResponse {
+public class Rows {
 
     @SerializedName("loc")
     @Expose
@@ -63,7 +63,7 @@ public class PropertyResponse {
      * No args constructor for use in serialization
      * 
      */
-    public PropertyResponse() {
+    public Rows() {
     }
 
     /**
@@ -86,7 +86,7 @@ public class PropertyResponse {
      * @param province
      * @param rooms
      */
-    public PropertyResponse(String loc, String title, String description, Integer price, Integer rooms, Integer size, CategoryId categoryId, String address, String zipcode, String city, String province, OwnerId ownerId, String createdAt, String updatedAt, Integer v, String id, List<String> photos) {
+    public Rows(String loc, String title, String description, Integer price, Integer rooms, Integer size, CategoryId categoryId, String address, String zipcode, String city, String province, OwnerId ownerId, String createdAt, String updatedAt, Integer v, String id, List<String> photos) {
         super();
         this.loc = loc;
         this.title = title;
