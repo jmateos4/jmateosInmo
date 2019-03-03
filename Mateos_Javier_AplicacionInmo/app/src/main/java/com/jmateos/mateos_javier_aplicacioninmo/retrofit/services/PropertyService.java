@@ -24,6 +24,6 @@ public interface PropertyService {
     Call<PropertyResponse> deleteProperty(@Path("id") String id);
 
     @POST("properties")
-    Call<PropertyResponse> addProperty(@Body PropertyDTO Property);
+    Call<PropertyResponseOne> addProperty(@Body PropertyDTO Property);
 
 }

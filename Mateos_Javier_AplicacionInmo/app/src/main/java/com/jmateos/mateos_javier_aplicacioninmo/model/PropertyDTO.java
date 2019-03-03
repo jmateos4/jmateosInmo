@@ -5,9 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class PropertyDTO {
 
-    @SerializedName("ownerId")
-    @Expose
-    private String ownerId;
+
     @SerializedName("title")
     @Expose
     private String title;
@@ -23,9 +21,6 @@ public class PropertyDTO {
     @SerializedName("size")
     @Expose
     private int size;
-    @SerializedName("categoryId")
-    @Expose
-    private String categoryId;
     @SerializedName("address")
     @Expose
     private String address;
@@ -42,17 +37,31 @@ public class PropertyDTO {
     @Expose
     private String loc;
 
-
-    public PropertyDTO(String title, int price, String zipcode, String city, String loc) {
+    public PropertyDTO(String title, String description, int price, int rooms, String address, String zipcode, String city, String province, String loc) {
         this.title = title;
+        this.description = description;
         this.price = price;
+        this.rooms = rooms;
+        this.address = address;
         this.zipcode = zipcode;
         this.city = city;
+        this.province = province;
         this.loc = loc;
     }
 
-    public PropertyDTO(String ownerId, String title, String description, int price, int rooms, int size, String address, String zipcode, String city, String province, String loc) {
-        this.ownerId = ownerId;
+    public PropertyDTO(String title, String description, int price, int rooms, int size, String address, String zipcode, String city, String province) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.rooms = rooms;
+        this.size = size;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.province = province;
+    }
+
+    public PropertyDTO(String title, String description, int price, int rooms, int size, String address, String zipcode, String city, String province, String loc) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -65,28 +74,7 @@ public class PropertyDTO {
         this.loc = loc;
     }
 
-    public PropertyDTO(String ownerId, String title, String description, int price, int rooms, int size, String categoryId, String address, String zipcode, String city, String province, String loc) {
-        this.ownerId = ownerId;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.rooms = rooms;
-        this.size = size;
-        this.categoryId = categoryId;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.city = city;
-        this.province = province;
-        this.loc = loc;
-    }
 
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
-    }
 
     public String getTitle() {
         return title;
@@ -128,13 +116,6 @@ public class PropertyDTO {
         this.size = size;
     }
 
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
 
     public String getAddress() {
         return address;
@@ -179,13 +160,11 @@ public class PropertyDTO {
     @Override
     public String toString() {
         return "PropertyDTO{" +
-                "ownerId='" + ownerId + '\'' +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", rooms=" + rooms +
                 ", size=" + size +
-                ", categoryId='" + categoryId + '\'' +
                 ", address='" + address + '\'' +
                 ", zipcode='" + zipcode + '\'' +
                 ", city='" + city + '\'' +
