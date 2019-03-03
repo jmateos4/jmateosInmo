@@ -1,6 +1,5 @@
-package com.jmateos.mateos_javier_aplicacioninmo;
+package com.jmateos.mateos_javier_aplicacioninmo.ui;
 
-import android.speech.tts.SynthesisRequest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jmateos.mateos_javier_aplicacioninmo.R;
+import com.jmateos.mateos_javier_aplicacioninmo.UtilToken;
 import com.jmateos.mateos_javier_aplicacioninmo.model.PropertyDTO;
 import com.jmateos.mateos_javier_aplicacioninmo.response.CategoryId;
 import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponseOne;

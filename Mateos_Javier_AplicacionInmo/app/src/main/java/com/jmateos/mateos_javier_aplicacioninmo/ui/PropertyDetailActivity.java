@@ -1,4 +1,4 @@
-package com.jmateos.mateos_javier_aplicacioninmo;
+package com.jmateos.mateos_javier_aplicacioninmo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.jmateos.mateos_javier_aplicacioninmo.R;
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertiesFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertyDetailFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;

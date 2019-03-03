@@ -15,24 +15,24 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.jmateos.mateos_javier_aplicacioninmo.UtilToken;
-import com.jmateos.mateos_javier_aplicacioninmo.ui.PropertyDetailActivity;
 import com.jmateos.mateos_javier_aplicacioninmo.R;
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertyDetailFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
 import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponse;
+import com.jmateos.mateos_javier_aplicacioninmo.ui.PropertyDetailActivity;
 
 import java.util.List;
 
 
-public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<PropertiesRecyclerViewAdapter.ViewHolder> {
+public class MyfavListRecyclerViewAdapter extends RecyclerView.Adapter<MyfavListRecyclerViewAdapter.ViewHolder> {
 
     private final List<PropertyResponse> mValues;
     private final PropertiesInteractionListener mListener;
+
     private Context ctx;
 
 
-    public PropertiesRecyclerViewAdapter(Context ctx, List<PropertyResponse> items, PropertiesInteractionListener listener) {
+    public MyfavListRecyclerViewAdapter(Context ctx, List<PropertyResponse> items, PropertiesInteractionListener listener) {
         mValues = items;
         mListener = listener;
         this.ctx = ctx;
@@ -42,7 +42,7 @@ public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<Properti
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_properties, parent, false);
+                .inflate(R.layout.fragment_favlist, parent, false);
         return new ViewHolder(view);
     }
 
@@ -50,23 +50,23 @@ public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<Properti
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mTitulo.setText(mValues.get(position).getTitle());
-        holder.mPrecio.setText(String.valueOf(mValues.get(position).getPrice())+ " €");
-        holder.mHabitaciones.setText("Nº Hab: "+ String.valueOf(mValues.get(position).getRooms()));
+        holder.mPrecio.setText(String.valueOf(mValues.get(position).getPrice()) + " €");
+        holder.mHabitaciones.setText("Nº Hab: " + String.valueOf(mValues.get(position).getRooms()));
 
 
-        if(mValues.get(position).getPhotos() == null) {
+        if (mValues.get(position).getPhotos() == null) {
 
         } else {
             Glide
                     .with(ctx)
                     .load(mValues.get(position).getPhotos().get(0))
-                    .into(new SimpleTarget<Drawable>(){
+                    .into(new SimpleTarget<Drawable>() {
                         @Override
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                             holder.mPhoto.setBackground(resource);
                         }
                     });
-                }
+        }
 
 
         holder.itemView.setTag(mValues.get(position));
@@ -90,7 +90,7 @@ public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<Properti
         public final View mView;
         public final TextView mTitulo;
         public final TextView mPrecio;
-       // public final TextView mCiudad;
+        // public final TextView mCiudad;
         public final TextView mHabitaciones;
         public final ImageView mPhoto, mFav;
 
@@ -108,10 +108,8 @@ public class PropertiesRecyclerViewAdapter extends RecyclerView.Adapter<Properti
             mFav = view.findViewById(R.id.imageFav);
 
 
-
-
-
         }
+
 
     }
 }

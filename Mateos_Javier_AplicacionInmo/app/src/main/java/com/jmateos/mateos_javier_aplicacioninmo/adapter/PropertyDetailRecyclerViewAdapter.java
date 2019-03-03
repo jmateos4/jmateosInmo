@@ -1,16 +1,13 @@
 package com.jmateos.mateos_javier_aplicacioninmo.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jmateos.mateos_javier_aplicacioninmo.PropertyDetailActivity;
 import com.jmateos.mateos_javier_aplicacioninmo.R;
-import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertyDetailFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
 import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponse;
 

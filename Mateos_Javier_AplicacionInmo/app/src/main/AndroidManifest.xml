@@ -11,13 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddPropertyActivity"></activity>
+        <activity android:name=".ui.AddPropertyActivity"></activity>
         <activity
-            android:name=".PropertyDetailActivity"
+            android:name=".ui.PropertyDetailActivity"
             android:label="@string/title_activity_property_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DashboardActivity"
+            android:name=".ui.DashboardActivity"
             android:label="@string/title_activity_dashboard"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,10 +27,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistroActivity"
+            android:name=".ui.RegistroActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <meta-data

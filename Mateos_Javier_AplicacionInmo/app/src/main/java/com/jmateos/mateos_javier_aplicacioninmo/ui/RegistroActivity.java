@@ -1,4 +1,4 @@
-package com.jmateos.mateos_javier_aplicacioninmo;
+package com.jmateos.mateos_javier_aplicacioninmo.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jmateos.mateos_javier_aplicacioninmo.R;
+import com.jmateos.mateos_javier_aplicacioninmo.UtilToken;
 import com.jmateos.mateos_javier_aplicacioninmo.response.LoginResponse;
 import com.jmateos.mateos_javier_aplicacioninmo.model.Registro;
 import com.jmateos.mateos_javier_aplicacioninmo.retrofit.generator.ServiceGenerator;

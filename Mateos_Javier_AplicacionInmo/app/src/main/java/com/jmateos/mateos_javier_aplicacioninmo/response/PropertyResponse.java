@@ -58,6 +58,7 @@ public class PropertyResponse {
     @SerializedName("photos")
     @Expose
     private List<String> photos = null;
+    private boolean isFav;
 
     /**
      * No args constructor for use in serialization
@@ -105,6 +106,35 @@ public class PropertyResponse {
         this.v = v;
         this.id = id;
         this.photos = photos;
+    }
+
+    public PropertyResponse(String loc, String title, String description, Integer price, Integer rooms, Integer size, CategoryId categoryId, String address, String zipcode, String city, String province, OwnerId ownerId, String createdAt, String updatedAt, Integer v, String id, List<String> photos, boolean isFav) {
+        this.loc = loc;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.rooms = rooms;
+        this.size = size;
+        this.categoryId = categoryId;
+        this.address = address;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.province = province;
+        this.ownerId = ownerId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.v = v;
+        this.id = id;
+        this.photos = photos;
+        this.isFav = isFav;
+    }
+
+    public boolean isFav() {
+        return isFav;
+    }
+
+    public void setFav(boolean fav) {
+        isFav = fav;
     }
 
     public String getLoc() {

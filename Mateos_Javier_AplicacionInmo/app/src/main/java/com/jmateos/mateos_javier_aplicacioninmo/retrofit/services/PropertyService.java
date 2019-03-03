@@ -26,4 +26,17 @@ public interface PropertyService {
     @POST("properties")
     Call<PropertyResponseOne> addProperty(@Body PropertyDTO Property);
 
+    @GET("/properties/mine")
+    Call<ResponseContainer<PropertyResponse>> getUserProperties();
+
+    @GET("/properties/fav")
+    Call<ResponseContainer<PropertyResponse>> getFavouritesProperties();
+
+    @POST("/properties/fav/{id}")
+    Call<PropertyResponse> addPropertiesFav(@Path("id") String id);
+
+    @DELETE("/properties/fav/{id}")
+    Call<PropertyResponse> deletePropertiesFav(@Path("id") String id);
+
+
 }
