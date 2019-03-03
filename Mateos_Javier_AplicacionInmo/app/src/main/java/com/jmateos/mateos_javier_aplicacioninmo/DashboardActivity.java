@@ -64,11 +64,6 @@ public class DashboardActivity extends AppCompatActivity
             fab.show();
         }
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.fragment, new PropertiesFragment())
-                .commit();
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

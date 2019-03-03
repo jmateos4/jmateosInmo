@@ -38,6 +38,7 @@ public class PropertyDetailFragment extends Fragment {
 
     private Rows mItem;
 
+
     private TextView deDescripcion, dePrecio;
 
 
@@ -79,17 +80,32 @@ public class PropertyDetailFragment extends Fragment {
                     if (response.isSuccessful()) {
                         mItem = response.body().getRows();
                         appBarLayout.setTitle(mItem.getTitle());
+                        if(mItem.getPhotos().size() == 0) {
+                            Glide.with(getContext())
+                                    .load("http://www.sclance.com/pngs/legal-png/legal_png_780684.png")
+                                    .into(new SimpleTarget<Drawable>(){
 
-                        Glide
-                                .with(getContext())
-                                .load(mItem.getPhotos().get(1))
-                                .into(new SimpleTarget<Drawable>(){
+                                        @Override
+                                        public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                            appBarLayout.setBackground(resource);
+                                        }
+                                    });
 
-                                    @Override
-                                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                                        appBarLayout.setBackground(resource);
-                                    }
-                                });
+                        } else {
+                            Glide
+                                    .with(getContext())
+                                    .load(mItem.getPhotos().get(0))
+                                    .into(new SimpleTarget<Drawable>(){
+
+                                        @Override
+                                        public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                            appBarLayout.setBackground(resource);
+                                        }
+                                    });
+                        }
+
+
+
                         ((TextView) rootView.findViewById(R.id.deDescripcion)).setText("Descripcion: " + mItem.getDescription());
                         ((TextView) rootView.findViewById(R.id.dePrecio)).setText("Precio: " + String.valueOf(mItem.getPrice()));
                         ((TextView) rootView.findViewById(R.id.deHab)).setText("Nº Habitaciones: " + String.valueOf(mItem.getRooms()));
