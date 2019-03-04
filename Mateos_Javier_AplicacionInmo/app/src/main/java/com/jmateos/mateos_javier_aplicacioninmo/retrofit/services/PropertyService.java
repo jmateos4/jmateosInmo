@@ -1,6 +1,7 @@
 package com.jmateos.mateos_javier_aplicacioninmo.retrofit.services;
 
 import com.jmateos.mateos_javier_aplicacioninmo.model.PropertyDTO;
+import com.jmateos.mateos_javier_aplicacioninmo.response.FavResponse;
 import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponse;
 import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponseOne;
 import com.jmateos.mateos_javier_aplicacioninmo.response.ResponseContainer;
@@ -33,10 +34,10 @@ public interface PropertyService {
     Call<ResponseContainer<PropertyResponse>> getFavouritesProperties();
 
     @POST("/properties/fav/{id}")
-    Call<PropertyResponse> addPropertiesFav(@Path("id") String id);
+    Call<FavResponse> addPropertiesFav(@Path("id") String id);
 
     @DELETE("/properties/fav/{id}")
-    Call<PropertyResponse> deletePropertiesFav(@Path("id") String id);
+    Call<FavResponse> deletePropertiesFav(@Path("id") String id);
 
 
 }

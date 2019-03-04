@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,8 @@ import android.view.MenuItem;
 
 import com.jmateos.mateos_javier_aplicacioninmo.R;
 import com.jmateos.mateos_javier_aplicacioninmo.UtilToken;
+import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertiesFragment;
+import com.jmateos.mateos_javier_aplicacioninmo.fragment.favListFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
 
 public class DashboardActivity extends AppCompatActivity
@@ -61,6 +64,11 @@ public class DashboardActivity extends AppCompatActivity
             fab.show();
         }
 
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.container, new PropertiesFragment())
+                .commit();
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,9 +107,16 @@ public class DashboardActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        Fragment f = null;
+
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, new PropertiesFragment())
+                    .commit();
+                return true;
 
         } else if (id == R.id.nav_login) {
             Intent goLogin = new Intent(this, LoginActivity.class);
@@ -112,6 +127,14 @@ public class DashboardActivity extends AppCompatActivity
             UtilToken.setToken(DashboardActivity.this, null);
             startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
             finish();
+        } else if ( id == R.id.nav_fav) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, new favListFragment())
+                    .commit();
+            return true;
+
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

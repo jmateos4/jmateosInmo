@@ -6,12 +6,28 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jmateos.mateos_javier_aplicacioninmo.R;
+import com.jmateos.mateos_javier_aplicacioninmo.UtilToken;
+import com.jmateos.mateos_javier_aplicacioninmo.adapter.MyfavListRecyclerViewAdapter;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
+import com.jmateos.mateos_javier_aplicacioninmo.response.PropertyResponse;
+import com.jmateos.mateos_javier_aplicacioninmo.response.ResponseContainer;
+import com.jmateos.mateos_javier_aplicacioninmo.retrofit.generator.ServiceGenerator;
+import com.jmateos.mateos_javier_aplicacioninmo.retrofit.generator.TipoAutenticacion;
+import com.jmateos.mateos_javier_aplicacioninmo.retrofit.services.PropertyService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class favListFragment extends Fragment {
@@ -23,6 +39,8 @@ public class favListFragment extends Fragment {
     private PropertiesInteractionListener mListener;
     private RecyclerView recyclerView;
     private Context ctx;
+    private List<PropertyResponse> inmuebleFavList;
+    private MyfavListRecyclerViewAdapter adapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -41,6 +59,7 @@ public class favListFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +77,43 @@ public class favListFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            final RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
+            inmuebleFavList = new ArrayList<>();
+
+            PropertyService service = ServiceGenerator.createService(PropertyService.class, UtilToken.getToken(context), TipoAutenticacion.JWT);
+            Call<ResponseContainer<PropertyResponse>> call = service.getFavouritesProperties();
+
+            call.enqueue(new Callback<ResponseContainer<PropertyResponse>>() {
+
+                @Override
+                public void onResponse(Call<ResponseContainer<PropertyResponse>> call, Response<ResponseContainer<PropertyResponse>> response) {
+                    if (response.code() != 200) {
+                        Toast.makeText(getActivity(), "Error en petición", Toast.LENGTH_SHORT).show();
+                    } else {
+                        inmuebleFavList = response.body().getRows();
+
+                        adapter = new MyfavListRecyclerViewAdapter(
+                                ctx,
+                                inmuebleFavList,
+                                mListener
+                        );
+                        recyclerView.setAdapter(adapter);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseContainer<PropertyResponse>> call, Throwable t) {
+                    Log.e("NetworkFailure", t.getMessage());
+                    Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
+                }
+
+
+            });
         }
         return view;
     }
@@ -72,6 +122,7 @@ public class favListFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.ctx = context;
         if (context instanceof PropertiesInteractionListener) {
             mListener = (PropertiesInteractionListener) context;
         } else {
