@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.jmateos.mateos_javier_aplicacioninmo.R;
 import com.jmateos.mateos_javier_aplicacioninmo.UtilToken;
+import com.jmateos.mateos_javier_aplicacioninmo.fragment.MyPropertiesFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.PropertiesFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.fragment.favListFragment;
 import com.jmateos.mateos_javier_aplicacioninmo.listener.PropertiesInteractionListener;
@@ -109,33 +110,52 @@ public class DashboardActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         Fragment f = null;
 
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+                case R.id.nav_inicio:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, new PropertiesFragment())
+                        .commit();
+                    break;
 
-        if (id == R.id.nav_inicio) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, new PropertiesFragment())
-                    .commit();
-                return true;
 
-        } else if (id == R.id.nav_login) {
-            Intent goLogin = new Intent(this, LoginActivity.class);
-            startActivity(goLogin);
-            finish();
-        } else if ( id == R.id.nav_logout) {
-            UtilToken.setIdUser(DashboardActivity.this, null);
-            UtilToken.setToken(DashboardActivity.this, null);
-            startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
-            finish();
-        } else if ( id == R.id.nav_fav) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, new favListFragment())
-                    .commit();
-            return true;
+                case R.id.nav_login:
+                Intent goLogin = new Intent(this, LoginActivity.class);
+                startActivity(goLogin);
+                finish();
+                break;
+
+                case R.id.nav_logout:
+                UtilToken.setIdUser(DashboardActivity.this, null);
+                UtilToken.setToken(DashboardActivity.this, null);
+                startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+                finish();
+                break;
+
+                case R.id.nav_fav:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, new favListFragment())
+                        .commit();
+
+                break;
+
+
+                case R.id.nav_viviendas:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, new MyPropertiesFragment())
+                        .commit();
+
+                break;
+
 
 
         }
+
+
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

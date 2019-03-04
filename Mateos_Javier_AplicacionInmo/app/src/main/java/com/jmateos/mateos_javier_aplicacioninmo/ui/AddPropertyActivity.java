@@ -37,6 +37,8 @@ public class AddPropertyActivity extends AppCompatActivity {
         addDescripcion = findViewById(R.id.addDescription);
         addHab = findViewById(R.id.addRooms);
         addPrice = findViewById(R.id.addPrice);
+        addHab = findViewById(R.id.addRooms);
+        addSize = findViewById(R.id.addSize);
         addCod = findViewById(R.id.addZipcode);
         addDireccion = findViewById(R.id.addAddress);
         addCiudad = findViewById(R.id.addCity);
@@ -50,7 +52,8 @@ public class AddPropertyActivity extends AppCompatActivity {
                         addTitulo.getText().toString(),
                         addDescripcion.getText().toString(),
                        Integer.valueOf(addPrice.getText().toString()),
-                        Integer.valueOf(addPrice.getText().toString()),
+                        Integer.valueOf(addHab.getText().toString()),
+                        Integer.valueOf(addSize.getText().toString()),
                         addCod.getText().toString(),
                         addDireccion.getText().toString(),
                         addCiudad.getText().toString(),

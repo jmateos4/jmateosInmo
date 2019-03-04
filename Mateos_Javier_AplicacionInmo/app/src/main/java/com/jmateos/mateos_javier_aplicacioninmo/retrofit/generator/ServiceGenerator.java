@@ -17,7 +17,7 @@ public class ServiceGenerator {
     // private static final String BASE_URL = "https://thawing-stream-33402.herokuapp.com/";
     // public static String MASTER_KEY = "dqVU9SXEW0iAMvOZGv9lnz3q67ukPcDH";
 
-    private static final String BASE_URL = "https://morning-chamber-30708.herokuapp.com";
+    private static final String BASE_URL = "https://realstatev2.herokuapp.com";
     public static String MASTER_KEY = "hzasFUC4txHXVHHWvjkR2R7UxQ6kzBlw";
 
 

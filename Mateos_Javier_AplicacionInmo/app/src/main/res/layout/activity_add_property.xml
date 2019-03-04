@@ -190,5 +190,19 @@
         app:layout_constraintStart_toStartOf="@+id/addProvince"
         app:layout_constraintTop_toTopOf="@+id/buttonAddProperty"
         app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/addSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="Tamaño"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/addPrice"
+            app:layout_constraintEnd_toEndOf="@+id/addDescription"
+            app:layout_constraintStart_toEndOf="@+id/addPrice"
+            app:layout_constraintTop_toTopOf="@+id/addPrice" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>
